@@ -16,13 +16,19 @@ const countryFlags = {
     "Nigeria": "🇳🇬",
     "North Korea": "🇰🇵",
     "Palestine": "🇵🇸",
-    "Spain": ".../catalonia-flag.256x160.png",
+   // "Spain": "https://github.com/bew89/WeatherApp/blob/main/catalonia-flag.256x160.png?raw=true",
     "United Kingdom": "🇬🇧",
     "United States": "🇺🇸"
 };
-// let countryFlagsImages = {}
 
-
+// const img = document.createElement("img");
+// img.src = "https://github.com/bew89/WeatherApp/blob/main/catalonia-flag.256x160.png?raw=true"
+// console.log(img)
+//
+// const whoknows = document.getElementById('whoKnows');
+//
+// whoknows.innerHTML = `<p> catalonia</p>`;
+// whoknows.appendChild(img);
 let city; // Change this to the desired city
 const apiKey = 'ebea856a2fc542f2a7a130908241405';
 let weatherData = {};
@@ -72,6 +78,7 @@ async function fetchWeatherData() {
 // Function to display weather information
 function displayWeatherInfo(weatherData, astronomyData) {
     const infoDisplay = document.getElementById('infoDisplay');
+    infoDisplay.innerHTML = "";
     if (weatherData) {
 
         const clearConditionEmoji = "🌈";
@@ -116,11 +123,15 @@ function displayWeatherInfo(weatherData, astronomyData) {
         sunrise = changeTo24TimeAndRemoveAMPM(sunrise);
         sunset = changeTo24TimeAndRemoveAMPM(sunset);
 
-        let flag = getCountryFlag(country);
+        if(city === "Catalonia"){
+            infoDisplay.innerHTML = `<p><img src="catalonia-flag.256x160.png" alt=""> Location: ${name}</p>`;
+        }else {
+            let flag = getCountryFlag(country);
+            infoDisplay.innerHTML = `<p>${flag} Location: ${name}</p>`
+        }
 
-
-        infoDisplay.innerHTML = `
-            <p>${flag} Location: ${name}</p>
+        infoDisplay.innerHTML += `
+       
             <p>${currentConditionEmoji} Condition: ${condition.text}</p>
             <p>${currentTempEmoji} Temperature: ${temp_c}°C / ${temp_f}°F </p>
             <p>${sunriseEmoji} Sunrise: ${sunrise}</p>

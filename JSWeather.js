@@ -1,4 +1,28 @@
-// Example usage: Fetch weather data for a specific city
+const countryFlags = {
+    "Algeria": "🇩🇿",
+    "Andorra": "🇦🇩",
+    "Argentina": "🇦🇷",
+    "Armenia": "🇦🇲",
+    "Australia": "🇦🇺",
+    "Belgium": "🇧🇪",
+    "Canada": "🇨🇦",
+    "China": "🇨🇳",
+    "Cyprus": "🇨🇾",
+    "Egypt": "🇪🇬",
+    "France": "🇫🇷",
+    "Germany": "🇩🇪",
+    "Greece": "🇬🇷",
+    "Italy": "🇮🇹",
+    "Nigeria": "🇳🇬",
+    "North Korea": "🇰🇵",
+    "Palestine": "🇵🇸",
+    "Spain": "🇪🇸",
+    "United Kingdom": "🇬🇧",
+    "United States": "🇺🇸"
+};
+// let countryFlagsImages = {}
+
+
 let city; // Change this to the desired city
 const apiKey = 'ebea856a2fc542f2a7a130908241405';
 let weatherData = {};
@@ -50,32 +74,57 @@ function displayWeatherInfo(weatherData, astronomyData) {
     const infoDisplay = document.getElementById('infoDisplay');
     if (weatherData) {
 
+        const clearConditionEmoji = "🌈";
+        const sunnyConditionEmoji = "☀️";
+        const sunnyCloudyEmoji = "🌥️";
+        const cloudyConditionEmoji = "☁️";
+        const rainyConditionEmoji = "🌧️";
+        const thunderEmoji = "🌩️";
+        let currentConditionEmoji = "";
 
+        const coldTemp = "❄️";
+        const hotTemp = "🔥";
+        let currentTempEmoji = "";
 
-const coldTemp = "❄️";
-const hotTemp = "🔥";
-let currentTempEmoji = "";
+        const sunriseEmoji = "🌅";
+        const sunsetEmoji = "🌇";
 
-const sunriseEmoji = "🌅";
-const sunsetEmoji = "🌇";
         const {location, current} = weatherData;
         const {astronomy} = astronomyData;
         const {astro} = astronomy;
-        const {name} = location;
+        const {name, country} = location;
         const {temp_c, temp_f, condition} = current;
 
-        if(temp_c > 20){
+        if (temp_c > 20) {
             currentTempEmoji = hotTemp;
-        }else{
+        } else {
             currentTempEmoji = coldTemp;
+        }
+
+        if (condition.text === "Clear") {
+            currentConditionEmoji = clearConditionEmoji;
+        } else if (condition.text === "Sunny") {
+            currentConditionEmoji = sunnyConditionEmoji;
+        } else if (condition.text === "Partly Cloudy") {
+            currentConditionEmoji = sunnyCloudyEmoji;
+        } else if (condition.text === "Overcast") {
+            currentConditionEmoji = cloudyConditionEmoji;
+        } else if (condition.text === "Patchy light rain with thunder") {
+            currentConditionEmoji = thunderEmoji;
         }
         let {sunrise, sunset} = astro;
         sunrise = changeTo24TimeAndRemoveAMPM(sunrise);
         sunset = changeTo24TimeAndRemoveAMPM(sunset);
 
+
+        const flag = getCountryFlag(country);
+
+        const flagImg = document.createElement("img");
+        flagImg.src = flag;
+
         infoDisplay.innerHTML = `
-            <p>Location: ${name}</p>
-            <p>Condition: ${condition.text}</p>
+            <p>${flag} Location: ${name}</p>
+            <p>${currentConditionEmoji} Condition: ${condition.text}</p>
             <p>${currentTempEmoji} Temperature: ${temp_c}°C / ${temp_f}°F </p>
             <p>${sunriseEmoji} Sunrise: ${sunrise}</p>
             <p>${sunsetEmoji} Sunset: ${sunset}</p>
@@ -84,6 +133,11 @@ const sunsetEmoji = "🌇";
     } else {
         infoDisplay.innerHTML = '<p>Unable to fetch weather data</p>';
     }
+}
+
+function getCountryFlag(country) {
+    return countryFlags[country];
+
 }
 
 function changeTo24TimeAndRemoveAMPM(timeString) {

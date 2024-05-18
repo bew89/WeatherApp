@@ -16,7 +16,7 @@ const countryFlags = {
     "Nigeria": "🇳🇬",
     "North Korea": "🇰🇵",
     "Palestine": "🇵🇸",
-    "Spain": "🇪🇸",
+    "Spain": ".../catalonia-flag.256x160.png",
     "United Kingdom": "🇬🇧",
     "United States": "🇺🇸"
 };
@@ -116,14 +116,8 @@ function displayWeatherInfo(weatherData, astronomyData) {
         sunrise = changeTo24TimeAndRemoveAMPM(sunrise);
         sunset = changeTo24TimeAndRemoveAMPM(sunset);
 
-        let flag = ""
-        if (name === "Catalonia") {
+        let flag = getCountryFlag(country);
 
-        } else {
-            flag = getCountryFlag(country);
-        }
-        const flagImg = document.createElement("img");
-        flagImg.src = flag;
 
         infoDisplay.innerHTML = `
             <p>${flag} Location: ${name}</p>

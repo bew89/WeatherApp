@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="064a1b2a-42fa-4b57-a045-8c4025b30704" name="Changes" comment="Created weather app">
-      <change beforePath="$PROJECT_DIR$/CSSWeather.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSSWeather.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JSWeather.js" beforeDir="false" afterPath="$PROJECT_DIR$/JSWeather.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +51,7 @@
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
+    "last.edited.regexp": "5:30      PM",
     "last_opened_file_path": "C:/Users/benwo/github/bew89.github.io",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -76,7 +78,7 @@
       <option name="presentableId" value="Default" />
       <updated>1715989680707</updated>
       <workItem from="1715989681744" duration="1181000" />
-      <workItem from="1715990916208" duration="1320000" />
+      <workItem from="1715990916208" duration="4417000" />
     </task>
     <task id="LOCAL-00001" summary="Created weather app">
       <option name="closed" value="true" />

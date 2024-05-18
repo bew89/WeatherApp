@@ -1,9 +1,10 @@
-
 // Example usage: Fetch weather data for a specific city
 let city; // Change this to the desired city
 const apiKey = 'ebea856a2fc542f2a7a130908241405';
 let weatherData = {};
 let astronomy = {};
+
+
 document.getElementById('places').addEventListener('change', function () {
     const locationElement = document.getElementById('places');
     const chosenLocation = locationElement.value;
@@ -11,7 +12,6 @@ document.getElementById('places').addEventListener('change', function () {
     if (chosenLocation !== "None") {
 
         city = chosenLocation;
-//its over
 
         fetchWeatherData(city)
             .then(data => {
@@ -47,31 +47,60 @@ async function fetchWeatherData() {
 
 // Function to display weather information
 function displayWeatherInfo(weatherData, astronomyData) {
-    console.log("got here")
-    console.log(weatherData)
-    console.log(astronomy)
     const infoDisplay = document.getElementById('infoDisplay');
     if (weatherData) {
-        console.log("got here2")
 
+
+
+const coldTemp = "❄️";
+const hotTemp = "🔥";
+let currentTempEmoji = "";
+
+const sunriseEmoji = "🌅";
+const sunsetEmoji = "🌇";
         const {location, current} = weatherData;
         const {astronomy} = astronomyData;
         const {astro} = astronomy;
-        console.log(astro)
         const {name} = location;
         const {temp_c, temp_f, condition} = current;
-        const {sunrise, sunset } = astro;
 
-        console.log(sunrise)
+        if(temp_c > 20){
+            currentTempEmoji = hotTemp;
+        }else{
+            currentTempEmoji = coldTemp;
+        }
+        let {sunrise, sunset} = astro;
+        sunrise = changeTo24TimeAndRemoveAMPM(sunrise);
+        sunset = changeTo24TimeAndRemoveAMPM(sunset);
+
         infoDisplay.innerHTML = `
             <p>Location: ${name}</p>
             <p>Condition: ${condition.text}</p>
-            <p>Temperature: ${temp_c}°C / ${temp_f}°F </p>
-            <p>Sunrise: ${sunrise}</p>
-            <p>Sunset: ${sunset}</p>
+            <p>${currentTempEmoji} Temperature: ${temp_c}°C / ${temp_f}°F </p>
+            <p>${sunriseEmoji} Sunrise: ${sunrise}</p>
+            <p>${sunsetEmoji} Sunset: ${sunset}</p>
                     
         `;
     } else {
         infoDisplay.innerHTML = '<p>Unable to fetch weather data</p>';
     }
+}
+
+function changeTo24TimeAndRemoveAMPM(timeString) {
+
+    let hours = parseInt(timeString.substring(0, 2));
+    let minutes = parseInt(timeString.substring(3, 5));
+    let isPM = timeString.indexOf("PM") > -1;
+
+    if (isPM && hours < 12) {
+        hours += 12;
+    } else if (!isPM && hours === 12) {
+        hours = 0;
+    }
+
+    timeString = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0');
+
+
+    return timeString.replace(/\s[AP]M$/, "");
+
 }

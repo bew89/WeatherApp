@@ -1,6 +1,7 @@
 
 body {
     background: #58558a;
+    font-family: 'Roboto', sans-serif;
 }
 header {
     grid-area: heading;
@@ -57,7 +58,7 @@ header {
 
 @media screen and (max-width: 600px) {
 
-header { font-size: 100px; }
+header { font-size: 90px; }
     #location { font-size: 30px;
     text-align: center; }
     #infoDisplay {

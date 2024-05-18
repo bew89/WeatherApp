@@ -62,5 +62,6 @@ header { font-size: 100px; }
     text-align: center; }
     #infoDisplay {
         font-size: 25px;
+        text-align: center;
     }
 }

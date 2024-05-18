@@ -55,3 +55,12 @@ header {
     grid-area: whoKnows;
 }
 
+@media screen and (max-width: 600px) {
+
+header { font-size: 100px; }
+    #location { font-size: 30px;
+    text-align: center; }
+    #infoDisplay {
+        font-size: 25px;
+    }
+}

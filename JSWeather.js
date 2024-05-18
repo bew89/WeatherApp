@@ -116,9 +116,12 @@ function displayWeatherInfo(weatherData, astronomyData) {
         sunrise = changeTo24TimeAndRemoveAMPM(sunrise);
         sunset = changeTo24TimeAndRemoveAMPM(sunset);
 
+        let flag = ""
+        if (name === "Catalonia") {
 
-        const flag = getCountryFlag(country);
-
+        } else {
+            flag = getCountryFlag(country);
+        }
         const flagImg = document.createElement("img");
         flagImg.src = flag;
 

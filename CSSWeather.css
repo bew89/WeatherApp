@@ -1,0 +1,57 @@
+
+body {
+    background: #58558a;
+}
+header {
+    grid-area: heading;
+    text-align: left;
+    font-size: 50px;
+    padding: 10px;
+    margin: 10px;
+
+    background: linear-gradient(to left,
+    #9ACD32, #FFDAB9, #FFFFE0, #FFFF00, #00BFFF, #FFA500,
+    #FF4500, #8B0000, #FFD700, #ADD8E6, #FFFFFF, #C0C0C0);
+    background-clip: text;
+    display: inline-block;
+    background-size: 200% auto;
+    color: transparent;
+    animation: animated 10s linear infinite;
+
+}
+
+@keyframes animated {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas:
+    'heading heading'
+    'location infoDisplay'
+    'location infoDisplay'
+    'whoKnows whoKnows';
+    padding: 20px;
+}
+
+#location {
+    grid-area: location;
+}
+
+#infoDisplay {
+    grid-area: infoDisplay;
+}
+
+#whoKnows {
+    grid-area: whoKnows;
+}
+

@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="064a1b2a-42fa-4b57-a045-8c4025b30704" name="Changes" comment="Created weather app" />
+    <list default="true" id="064a1b2a-42fa-4b57-a045-8c4025b30704" name="Changes" comment="Created weather app">
+      <change beforePath="$PROJECT_DIR$/MainWeather.html" beforeDir="false" afterPath="$PROJECT_DIR$/MainWeather.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,7 +76,7 @@
       <option name="presentableId" value="Default" />
       <updated>1715989680707</updated>
       <workItem from="1715989681744" duration="1181000" />
-      <workItem from="1715990916208" duration="348000" />
+      <workItem from="1715990916208" duration="680000" />
     </task>
     <task id="LOCAL-00001" summary="Created weather app">
       <option name="closed" value="true" />

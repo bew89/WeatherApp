@@ -5,10 +5,9 @@ body {
 }
 header {
     grid-area: heading;
-    text-align: left;
+    text-align: center;
     font-size: 50px;
-    padding: 10px;
-    margin: 10px;
+    margin: 5px;
 
     background: linear-gradient(to left,
     #9ACD32, #FFDAB9, #FFFFE0, #FFFF00, #00BFFF, #FFA500,
@@ -37,11 +36,11 @@ header {
 .grid-container {
     display: grid;
     grid-template-areas:
-    'heading heading'
-    'location infoDisplay'
-    'location infoDisplay'
+    'heading heading heading'
+    'location location'
+    'infoDisplay infoDisplay'
     'whoKnows whoKnows';
-    padding: 20px;
+
 }
 
 #location {
@@ -55,19 +54,21 @@ header {
 #whoKnows {
     grid-area: whoKnows;
 }
-
+img {
+    height: 22px;
+}
 @media screen and (max-width: 600px) {
 
 header { font-size: 70px;
-text-align: center; }
-    #location { font-size: 30px;
-    text-align: left; }
+text-align: center;
+padding-bottom: 20px
+}
+    #location { font-size: 20px;
+    text-align: center; }
     #places { font-size: 20px; }
     #infoDisplay {
-        font-size: 25px;
+        font-size: 20px;
         text-align: left;
     }
-    img {
-        height: 22px;
-    }
+
 }

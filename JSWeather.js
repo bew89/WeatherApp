@@ -16,19 +16,10 @@ const countryFlags = {
     "Nigeria": "🇳🇬",
     "North Korea": "🇰🇵",
     "Palestine": "🇵🇸",
-   // "Spain": "https://github.com/bew89/WeatherApp/blob/main/catalonia-flag.256x160.png?raw=true",
     "United Kingdom": "🇬🇧",
     "United States": "🇺🇸"
 };
 
-// const img = document.createElement("img");
-// img.src = "https://github.com/bew89/WeatherApp/blob/main/catalonia-flag.256x160.png?raw=true"
-// console.log(img)
-//
-// const whoknows = document.getElementById('whoKnows');
-//
-// whoknows.innerHTML = `<p> catalonia</p>`;
-// whoknows.appendChild(img);
 let city; // Change this to the desired city
 const apiKey = 'ebea856a2fc542f2a7a130908241405';
 let weatherData = {};
@@ -51,6 +42,9 @@ document.getElementById('places').addEventListener('change', function () {
                 console.log(astronomy);
                 displayWeatherInfo(weatherData, astronomy);
             })
+    }else{
+        const display = document.getElementById('infoDisplay');
+        display.innerHTML = "";
     }
 });
 
@@ -112,7 +106,7 @@ function displayWeatherInfo(weatherData, astronomyData) {
             currentConditionEmoji = clearConditionEmoji;
         } else if (condition.text === "Sunny") {
             currentConditionEmoji = sunnyConditionEmoji;
-        } else if (condition.text === "Partly Cloudy") {
+        } else if (condition.text === "Partly cloudy") {
             currentConditionEmoji = sunnyCloudyEmoji;
         } else if (condition.text === "Overcast") {
             currentConditionEmoji = cloudyConditionEmoji;
@@ -123,9 +117,9 @@ function displayWeatherInfo(weatherData, astronomyData) {
         sunrise = changeTo24TimeAndRemoveAMPM(sunrise);
         sunset = changeTo24TimeAndRemoveAMPM(sunset);
 
-        if(city === "Catalonia"){
+        if (city === "Catalonia") {
             infoDisplay.innerHTML = `<p><img src="catalonia-flag.256x160.png" alt=""> Location: ${name}</p>`;
-        }else {
+        } else {
             let flag = getCountryFlag(country);
             infoDisplay.innerHTML = `<p>${flag} Location: ${name}</p>`
         }

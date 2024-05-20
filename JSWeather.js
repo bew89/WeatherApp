@@ -20,10 +20,11 @@ const countryFlags = {
     "United States": "🇺🇸"
 };
 
+const date = getDate();
 let city; // Change this to the desired city
 const apiKey = 'ebea856a2fc542f2a7a130908241405';
 let weatherData = {};
-let astronomy = {};
+let astronomyData = {};
 
 
 document.getElementById('places').addEventListener('change', function () {
@@ -37,12 +38,11 @@ document.getElementById('places').addEventListener('change', function () {
         fetchWeatherData(city)
             .then(data => {
                 weatherData = data.weatherData;
-                astronomy = data.astronomy;
-                console.log(weatherData);
-                console.log(astronomy);
-                displayWeatherInfo(weatherData, astronomy);
+                astronomyData = data.astronomyData;
+
+                displayWeatherInfo(weatherData, astronomyData);
             })
-    }else{
+    } else {
         const display = document.getElementById('infoDisplay');
         display.innerHTML = "";
     }
@@ -51,17 +51,16 @@ document.getElementById('places').addEventListener('change', function () {
 
 async function fetchWeatherData() {
     const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
-    const apiUrl2 = `https://api.weatherapi.com/v1/astronomy.json?key=${apiKey}&q=${city}&dt=2024-05-17`;
+    const apiUrl2 = `https://api.weatherapi.com/v1/astronomy.json?key=${apiKey}&q=${city}&dt=${date}`;
 
     try {
-        const response = await fetch(apiUrl);
-        const response2 = await fetch(apiUrl2);
-        const responsejson1 = await response.json();
-        console.log("got 1");
+        let weather = await fetch(apiUrl);
+        let astronomy = await fetch(apiUrl2);
 
+        weather = await weather.json();
+        astronomy = await astronomy.json();
 
-        const responsejson2 = await response2.json();
-        return {weatherData: responsejson1, astronomy: responsejson2};
+        return {weatherData: weather, astronomyData: astronomy};
     } catch (error) {
         console.error('Error fetching weather data:', error);
         return null;
@@ -159,4 +158,12 @@ function changeTo24TimeAndRemoveAMPM(timeString) {
 
     return timeString.replace(/\s[AP]M$/, "");
 
+}
+function getDate(){
+    let date = new Date();
+    let year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+
+    return year + "-" + month + "-" + day;
 }

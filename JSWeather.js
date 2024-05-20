@@ -39,7 +39,7 @@ document.getElementById('places').addEventListener('change', function () {
             .then(data => {
                 weatherData = data.weatherData;
                 astronomyData = data.astronomyData;
-
+                console.log(weatherData)
                 displayWeatherInfo(weatherData, astronomyData);
             })
     } else {
@@ -68,7 +68,6 @@ async function fetchWeatherData() {
 }
 
 
-// Function to display weather information
 function displayWeatherInfo(weatherData, astronomyData) {
     const infoDisplay = document.getElementById('infoDisplay');
     infoDisplay.innerHTML = "";
@@ -111,12 +110,14 @@ function displayWeatherInfo(weatherData, astronomyData) {
             currentConditionEmoji = cloudyConditionEmoji;
         } else if (condition.text === "Patchy light rain with thunder") {
             currentConditionEmoji = thunderEmoji;
+        } else if (condition.text === "Light rain shower") {
+            currentConditionEmoji = rainyConditionEmoji;
         }
         let {sunrise, sunset} = astro;
         sunrise = changeTo24TimeAndRemoveAMPM(sunrise);
         sunset = changeTo24TimeAndRemoveAMPM(sunset);
 
-        if (city === "Catalonia") {
+        if (city === "41.82, 1.47") {
             infoDisplay.innerHTML = `<p><img src="catalonia-flag.256x160.png" alt=""> Location: ${name}</p>`;
         } else {
             let flag = getCountryFlag(country);
@@ -159,7 +160,8 @@ function changeTo24TimeAndRemoveAMPM(timeString) {
     return timeString.replace(/\s[AP]M$/, "");
 
 }
-function getDate(){
+
+function getDate() {
     let date = new Date();
     let year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');

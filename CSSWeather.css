@@ -9,7 +9,7 @@ body {
 header {
     grid-area: heading;
     text-align: center;
-    font-size: 50px;
+    font-size: 90px;
     margin: 5px;
 
     background: linear-gradient(to left,
@@ -35,14 +35,21 @@ header {
     }
 
 }
+
 #places {
     font-size: 40px;
+    height: 55px;
+    margin: 15px
 
-    margin: 10px
+
 }
-#textInput{
+
+#textInput {
     font-size: 40px;
+    height: 50px;
+
 }
+
 .grid-container {
     display: grid;
     grid-template-areas:
@@ -59,9 +66,9 @@ header {
 
 #infoDisplay {
     grid-area: infoDisplay;
-        font-size: 25px;
-        text-align: left;
-    }
+    font-size: 25px;
+    text-align: left;
+}
 
 
 #whoKnows {
@@ -89,7 +96,8 @@ img {
         font-size: 20px;
         margin: 10px
     }
-    #textInput{
+
+    #textInput {
         font-size: 20px;
     }
 

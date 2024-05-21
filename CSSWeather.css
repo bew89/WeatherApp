@@ -3,6 +3,7 @@ body {
     background: #58558a;
     font-family: 'Roboto', sans-serif;
     color: white;
+    font-size: 30px;
 }
 
 header {
@@ -34,7 +35,14 @@ header {
     }
 
 }
+#places {
+    font-size: 40px;
 
+    margin: 10px
+}
+#textInput{
+    font-size: 40px;
+}
 .grid-container {
     display: grid;
     grid-template-areas:
@@ -51,7 +59,10 @@ header {
 
 #infoDisplay {
     grid-area: infoDisplay;
-}
+        font-size: 25px;
+        text-align: left;
+    }
+
 
 #whoKnows {
     grid-area: whoKnows;
@@ -75,6 +86,10 @@ img {
     }
 
     #places {
+        font-size: 20px;
+        margin: 10px
+    }
+    #textInput{
         font-size: 20px;
     }
 
